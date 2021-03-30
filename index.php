@@ -1,8 +1,14 @@
+<?php  
+session_start();
+foreach ($_SESSION as $key => $value) {
+    print($key.' - '.$value.'<br>');
+};
+?>
 <!DOCTYPE html>
 <html lang="pt-br" id="extr-page">
 
-<!-- Mirrored from proesc.com/calculadora by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Mar 2021 21:38:28 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
         <meta http-equiv="Cache-control" charset="utf-8">
         <title>Programa de Bolsas Especiais</title>
@@ -34,7 +40,7 @@
                                     <div class="col-md-4 col-sm-4 col-p-6">&nbsp;</div>
                                     <div class="form-group col-md-5 col-xs-5 not-print right-md config-gear">
                                         <div id="vis" class="margin-left-0 btn-padding-10 right-md center-xs hidden-sm hidden-xs" >
-                                        	<span style="font-size: 20px;">Programa de Bolsas Especiais</span>
+                                        	<span style="font-size: 20px;">Programa de Bolsas Especiais <?= $_SESSION['notas'] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -214,6 +220,7 @@
        const ssa2 = document.querySelector('[wm-ssa2]')
        
        const valores = [parseInt(red.value),parseInt(lin.value),parseInt(hum.value),parseInt(nat.value),parseInt(mat.value)]
+       sessionStorage.setItem('notas',2)
        
         calculaAjuste(parseInt(ssa1.value),parseInt(ssa2.value),media(valores));
     });
@@ -248,7 +255,7 @@
                                 <h4>Bolsa 1</h4>
 				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA1.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/?v=${valorSSA1}" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 
 								</center>
 				            </div>
@@ -261,7 +268,7 @@
                                 <h4>Bolsa 2</h4>
                                 <button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA2.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/?v=${valorSSA2}" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 								</center>
 				            </div>
 				        </div>
@@ -273,7 +280,7 @@
                                     <h4>Bolsa 3</h4>
 				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA3.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/?v=${valorSSA3}" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 								</center>
 				            </div>
 				        </div>
@@ -286,5 +293,4 @@
 </script>
 </body>
 
-<!-- Mirrored from proesc.com/calculadora by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Mar 2021 21:38:32 GMT -->
 </html>
