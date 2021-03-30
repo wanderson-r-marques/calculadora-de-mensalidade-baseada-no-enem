@@ -15,6 +15,7 @@
         <link media="all" type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
 
         <link media='all' type='text/css' rel='stylesheet' href='css/calculadora.css'>
+        
     </head>
     <body class="greey">
         <script src='js/libs/jquery-2.0.2.min.js'></script>
@@ -24,7 +25,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="small-box bg-white">
-                            <div class="inner" style="padding-top: 10px">
+                            <div class="inner" style="padding-left:25px; padding-top: 25px">
                                 <div class="form-group" style="margin-bottom: 0px;">
                                     <center><img class="logo" src="https://www.academiafernandinhobeltrao.com.br/redirect/imgs/HORIZONTALMENOR1.png"></center>
                                 </div>
@@ -48,8 +49,8 @@
                                 <li class="active" id="tab_mensalidade">
                                     <a href="#" data-toggle="tab" aria-expanded="true"><i class="fa fa-fw fa-lg fa fa-shopping-cart"></i>Mensalidades</a>
                                 </li>
-                                <li class="" id="tab_boleto">
-                                    <a href="#" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-lg fa-files-o"></i> Realizar pagamento</a>
+                                <li class="" >
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank"><i class="fa fa-fw fa-lg fa-files-o"></i> Fazer matrícula</a>
                                 </li>
                             </ul>
 				            <div class="inner" style="min-height: 76px;">
@@ -200,91 +201,6 @@
 <script src='js/jquery.toaster.js'></script>
 <script src='js/plugin/monetario/mascara_monetario.js'></script>
 <script>
-    $(document).delegate('#tab_mensalidade', 'click', function(event)
-    {
-        $('.orcamento_cliente').show(200);
-        $('.calculo_boleto').hide(200);
-
-        $('#tab_boleto').removeClass("active");
-        $('#tab_mensalidade').removeClass("active");
-        $('#tab_mensalidade').addClass("active");
-    });
-
-    $(document).delegate('#quantidade_alunos', 'change', function(event)
-    {
-        $(".carregandoInformacoesCartao").html("<div class='loading'><center><i class='fa fa-spinner fa-5x fa-spin' aria-hidden='true'></i></center></div>");
-        $('.exibeValores').remove();
-
-        qtd_aluno         = moeda2float($(this).val());
-        valor_mensalidade = moeda2float($('#valor_mensalidade').val());
-        taxa_cartao       = $('#taxa_cartao').val();
-
-        valor_mensal      = (valor_mensalidade * taxa_cartao * 0.01) * qtd_aluno;
-        valor_anual       = ((valor_mensalidade * taxa_cartao * 0.01) * qtd_aluno) * 12;
-
-        $('.exibe_mensal').append('<span class="exibeValores" style="font-size: 19px;">R$ '+float2moeda(valor_mensal)+'</span>');
-        $('.exibe_anual').append('<span class="exibeValores" style="font-size: 19px;">R$ '+float2moeda(valor_anual)+'</span>');
-
-        $.fn.calculaDadosFinanceiros(qtd_aluno, valor_mensal, valor_anual);
-    });
-
-    $.fn.calculaDadosFinanceiros=function(qtd_alunos, valor_mensal, valor_anual)
-    {
-        $('.loading').remove();
-        $(".dados_registro_cartao").remove();
-
-        valorMensal = qtd_alunos * 4;
-        valorAnual = (qtd_alunos * 4) * 12;
-
-        valorMensalProesc = valor_mensal - valorMensal;
-        valorAnualProesc  = valor_anual - valorAnual;
-
-        tabela = '<div class="dados_registro_cartao">\
-                    <table class="table">\
-                        <tr>\
-                            <center><b>INFORMAÇÕES FINANCEIRAS DO BOLETO PROESC.COM</b></center>\
-                        </tr>\
-                        <tr>\
-                            <th class="center">TAXA DO BOLETO</th>\
-                            <th class="center">QUANTIDADE DE ALUNOS</th>\
-                            <th class="center">MÊS/ANO</th>\
-                        </tr>\
-                        <tr>\
-                            <td><center>R$ 4,00</center></td>\
-                            <td><center>'+qtd_alunos+'</center></td>\
-                            <td><center><span style="font-size:19px;">R$ '+float2moeda(valorMensal)+' / R$ '+float2moeda(valorAnual)+'</span></center></td>\
-                        </tr>\
-                    </table>\
-                    <br>\
-                    <div class="alert alert-success" role="alert" style="font-size: 19px;width: 48%;color: #fff !important;float: right;">\
-                        <center><b>Ecônomia gerada pelo boleto Proesc.com</b></center><br />\
-                        <p>Ecônomia mensal: <span style="font-size: 25px !important;font-weight: bold;">R$ '+float2moeda(valorMensalProesc)+'</span></p>\
-                        <p>Ecônomia anual : <span style="font-size: 25px !important;font-weight: bold;">R$ '+float2moeda(valorAnualProesc)+'</span></p>\
-                    </div>\
-                </div>';
-
-        $('.lista_registros_cartao').append(tabela);
-    }
-
-    $(document).delegate('#tab_boleto', 'click', function(event)
-    {
-        $('.orcamento_cliente').hide(200);
-        $('.calculo_boleto').show(200);
-
-        $('#tab_mensalidade').removeClass("active");
-        $('#tab_boleto').removeClass("active");
-        $('#tab_boleto').addClass("active");
-    });
-
-    $(document).delegate('#qtd_parcelas', 'change', function(event)
-    {
-        qtd = $(this).val();
-
-        valor_parcela = $('#valor_plano').val() * 2 / qtd;
-        $('#parcela_implantacao').val(float2moeda(valor_parcela));
-    });
-
-	$(".monetario").maskMoney();
 // Função para calcular a mensalidade
 	$(document).delegate('#calcular', 'click', function(event)
     {
@@ -297,14 +213,9 @@
        const ssa2 = document.querySelector('[wm-ssa2]')
        
        const valores = [parseInt(red.value),parseInt(lin.value),parseInt(hum.value),parseInt(nat.value),parseInt(mat.value),parseInt(ssa1.value),parseInt(ssa2.value)]
-
-
-
-       alert(media(valores))
-
-        $.fn.calculaAjuste($('#valor_plano').val(), '01', $('#tipo_cobranca').val());
+       
+        calculaAjuste(parseInt(ssa1.value),parseInt(ssa2.value),media(valores));
     });
-
     function converteMoeda(valor){
         return valor.replace('.','').replace(',','.')
     }
@@ -313,148 +224,63 @@
         for(let i in valores){            
             if(!valores[i]) 
                 valores[i] = 0
-            soma = soma + valores[i]
-            
+            soma = soma + valores[i]            
         }
         return soma/valores.length
-    }
+    } 
 
-    $(document).delegate('#dia05', 'click', function(event)
+    function calculaAjuste(ssa1, ssa2, media)
     {
-        $("#dia05").removeClass('btn-default');
-        $("#dia05").addClass('btn-success');
-        $(".data_pagamento").val('05');
-
-        $("#dia01").removeClass('btn-success');
-        $("#dia01").addClass('btn-default');
-        $("#dia15").removeClass('btn-success');
-        $("#dia15").addClass('btn-default');
-        $("#dia25").removeClass('btn-success');
-        $("#dia25").addClass('btn-default');
-
-        $.fn.calculaAjuste($('#valor_plano').val(), '05', $('#tipo_cobranca').val());
-    });
-    $(document).delegate('#dia15', 'click', function(event)
-    {
-        $("#dia15").removeClass('btn-default');
-        $("#dia15").addClass('btn-success');
-        $(".data_pagamento").val('15');
-        $("#dia01").removeClass('btn-success');
-        $("#dia01").addClass('btn-default');
-        $("#dia05").removeClass('btn-success');
-        $("#dia05").addClass('btn-default');
-        $("#dia25").removeClass('btn-success');
-        $("#dia25").addClass('btn-default');
-
-        $.fn.calculaAjuste($('#valor_plano').val(), '15', $('#tipo_cobranca').val());
-    });
-    $(document).delegate('#dia25', 'click', function(event)
-    {
-        $("#dia25").removeClass('btn-default');
-        $("#dia25").addClass('btn-success');
-        $(".data_pagamento").val('25');
-        $("#dia01").removeClass('btn-success');
-        $("#dia01").addClass('btn-default');
-        $("#dia05").removeClass('btn-success');
-        $("#dia05").addClass('btn-default');
-        $("#dia15").removeClass('btn-success');
-        $("#dia15").addClass('btn-default');
-
-        $.fn.calculaAjuste($('#valor_plano').val(), '25', $('#tipo_cobranca').val());
-    });
-
-    $.fn.calculaAjuste=function(valor_plano, data_pagamento, tipo)
-    {
+      
     	$(".carregandoInformacoes").html("<div class='loading'><center><i class='fa fa-spinner fa-5x fa-spin' aria-hidden='true'></i></center></div>");
     	$(".dados_registro").remove();
 
-        $('#valor_plano').parents('.form-group').removeClass('has-error');
-        $('#valor_plano').parents('.form-group').removeClass('has-success');
-        $.ajax({
-            url: '/calcula_ajuste_detalhado',
-            type: 'GET',
-            dataType: 'JSON',
-            data: {
-                valor_plano    : valor_plano,
-                data_pagamento : data_pagamento,
-                tipo           : tipo
-            },
-        })
-        .done(function(retorno) {
-        	$(".loading").remove();
+        const valorSSA1 = 1500-(10*ssa1)
+        const valorSSA2 = 1500-(10*ssa2)
+        const valorSSA3 = 1500-media
 
-        	//SEMESTRAL
-        	if(tipo == 2){
-        		valor_plano         = parseInt($('#valor_plano').val()) * 6;
-        		valor_total         = valor_plano + parseInt($('#parcela_implantacao').val()) + retorno.data.valor_diferenca;
-        		desconto            = valor_total * 0.13;
-        		percentual_desconto = 13;
-        		nome_tipo           = 'semestral';
-    		//ANUAL
-        	}else if(tipo == 3){
-        		valor_plano         = parseInt($('#valor_plano').val()) * 12;
-        		valor_total         = valor_plano + parseInt($('#parcela_implantacao').val()) + retorno.data.valor_diferenca;
-        		desconto            = valor_total * 0.16;
-        		percentual_desconto = 16;
-        		nome_tipo           = 'anual';
-        	//MENSAL
-        	}else{
-        		valor_plano         = parseInt($('#valor_plano').val());
-        		valor_total         = valor_plano + parseInt($('#parcela_implantacao').val()) + retorno.data.valor_diferenca;
-        		desconto            = valor_total * 0.1;
-        		percentual_desconto = 10;
-        		nome_tipo           = 'mensal';
-        	}
+        let html = `
+                    <div class="col-md-4 col-xs-12 orcamento_cliente">
+				        <div class="small-box bg-white" style="height: 160px;">
+				            <div class="inner" style="min-height: 76px;">
+				                <center>
+                                <h4>SSA1</h4>
+				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA1.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
+<br>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 
-        	var valor_final         = valor_total;
-        	var total_desconto      = desconto;
-        	var valor_atualizado    = valor_total - desconto;
-        	var media               = ($('#valor_plano').val() * 0.9) / retorno.data.qtd_aluno;
+								</center>
+				            </div>
+				        </div>
+				    </div>
+                    <div class="col-md-4 col-xs-12 orcamento_cliente">
+				        <div class="small-box bg-white" style="height: 160px;">
+				            <div class="inner" style="min-height: 76px;">
+				                <center>
+                                <h4>SSA2</h4>
+                                <button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA2.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
+<br>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+								</center>
+				            </div>
+				        </div>
+				    </div>
+                    <div class="col-md-4 col-xs-12 orcamento_cliente">
+				        <div class="small-box bg-white" style="height: 160px;">
+				            <div class="inner" style="min-height: 76px;">
+				                <center>
+                                    <h4>SSA3</h4>
+				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA3.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
+<br>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+								</center>
+				            </div>
+				        </div>
+				    </div>
+                    `;
+        $('.lista_registros').html(html);
 
-            html = '<div class="dados_registro">\
-	            		<table class="table">\
-	                        <tr colspan=3><center><b>ORÇAMENTO PARA O CLIENTE</b></center></tr>\
-	                        <tr>\
-	                            <td colspan=2>Valor do plano '+nome_tipo+'</td>\
-	                            <td style="text-align: right;">R$ '+float2moeda(valor_plano)+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Valor médio por aluno</td>\
-	                            <td style="text-align: right;">R$ '+float2moeda(media.toFixed(2))+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Valor por dia (valor do plano / 30)</td>\
-	                            <td style="text-align: right;">R$ '+float2moeda(retorno.data.valor_diario)+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Dias de diferença</th>\
-	                            <td style="text-align: right;">'+retorno.data.diferenca_dias+' dias</th>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Valor adicional (valor por dia X dias de diferença)</td>\
-	                            <td style="text-align: right;">R$ '+float2moeda(retorno.data.valor_diferenca)+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Parcela da taxa de implantação</td>\
-	                            <td style="text-align: right;">R$ '+$('#parcela_implantacao').val()+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Valor total para esta data</td>\
-	                            <td style="text-align: right;">R$ '+float2moeda(valor_final)+'</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2>Desconto</td>\
-	                            <td style="text-align: right;">R$ - '+float2moeda(desconto)+' ('+percentual_desconto+'%)</td>\
-	                        </tr>\
-	                        <tr>\
-	                            <td colspan=2 class="left" style="text-align: right;">VALOR FINAL ATUALIZADO COM DESCONTO</td>\
-	                            <td style="font-size: 25px;text-align: right;">R$ '+float2moeda(valor_atualizado)+'</td>\
-	                        </tr>\
-	                	</table>\
-	                </div>';
-
-            $('.lista_registros').append(html);
-        });
+        $(".carregandoInformacoes").remove();
     }
 </script>
 </body>
