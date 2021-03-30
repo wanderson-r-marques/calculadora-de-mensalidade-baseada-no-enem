@@ -5,7 +5,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
         <meta http-equiv="Cache-control" charset="utf-8">
-        <title>Calculadora FB</title>
+        <title>Programa de Bolsas Especiais</title>
         <link rel="icon" type="image/png" sizes="16x11" href="images/favicon.png">
         <meta name="description" content="Ambiente de simulação de valor de mensalidade">
         <meta name="author" content="Proesc.com">
@@ -34,7 +34,7 @@
                                     <div class="col-md-4 col-sm-4 col-p-6">&nbsp;</div>
                                     <div class="form-group col-md-5 col-xs-5 not-print right-md config-gear">
                                         <div id="vis" class="margin-left-0 btn-padding-10 right-md center-xs hidden-sm hidden-xs" >
-                                        	<span style="font-size: 20px;">Calculadora FB</span>
+                                        	<span style="font-size: 20px;">Programa de Bolsas Especiais</span>
                                         </div>
                                     </div>
                                 </div>
@@ -51,13 +51,13 @@
                                     <a href="#" data-toggle="tab" aria-expanded="true"><i class="fa fa-fw fa-lg fa fa-shopping-cart"></i>Mensalidades</a>
                                 </li>
                                 <li class="" >
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank"><i class="fa fa-fw fa-lg fa-files-o"></i> Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank"><i class="fa fa-fw fa-lg fa-files-o"></i> Fazer matrícula</a>
                                 </li>
                             </ul>
 				            <div class="inner" style="min-height: 76px;">
                                 <div class="orcamento_cliente">
     				                <center>
-    				                	<p>Digite suas notas do ENEM</p>
+    				                	<p>Digite suas notas</p>
     				                </center>
     				                <br>
     				                <div class="row">
@@ -156,7 +156,7 @@
 				                	<div class="dados_registro">
 					            		<table class="table">
 					                        <tr>
-					                        	<center><b>VALOR DO CURSO ESCOLHIDO</b></center>
+					                        	<center><b>VALOR DA MENSALIDADE A SER CALCULADO</b></center>
 					                        </tr>
 					                        <tr>
 					                        	<center>
@@ -180,7 +180,7 @@
                                     <div class="dados_registro_cartao">
                                         <table class="table">
                                             <tr>
-                                                <center><b>INFORMAÇÕES FINANCEIRAS DO BOLETO PROESC.COM</b></center>
+                                                <center><b> </b></center>
                                             </tr>
                                             <tr>
                                                 <center>
@@ -213,7 +213,7 @@
        const ssa1 = document.querySelector('[wm-ssa1]')
        const ssa2 = document.querySelector('[wm-ssa2]')
        
-       const valores = [parseInt(red.value),parseInt(lin.value),parseInt(hum.value),parseInt(nat.value),parseInt(mat.value),parseInt(ssa1.value),parseInt(ssa2.value)]
+       const valores = [parseInt(red.value),parseInt(lin.value),parseInt(hum.value),parseInt(nat.value),parseInt(mat.value)]
        
         calculaAjuste(parseInt(ssa1.value),parseInt(ssa2.value),media(valores));
     });
@@ -245,10 +245,10 @@
 				        <div class="small-box bg-white" style="height: 160px;">
 				            <div class="inner" style="min-height: 76px;">
 				                <center>
-                                <h4>SSA1</h4>
+                                <h4>Bolsa 1</h4>
 				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA1.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 
 								</center>
 				            </div>
@@ -258,10 +258,10 @@
 				        <div class="small-box bg-white" style="height: 160px;">
 				            <div class="inner" style="min-height: 76px;">
 				                <center>
-                                <h4>SSA2</h4>
+                                <h4>Bolsa 2</h4>
                                 <button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA2.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 								</center>
 				            </div>
 				        </div>
@@ -270,10 +270,10 @@
 				        <div class="small-box bg-white" style="height: 160px;">
 				            <div class="inner" style="min-height: 76px;">
 				                <center>
-                                    <h4>SSA3</h4>
+                                    <h4>Bolsa 3</h4>
 				                	<button type="button" class="btn btn-warning btn-lg" style="font-size: 20px;">${valorSSA3.toLocaleString("pt-br",{style: "currency", currency: "BRL"})}</button>
 <br>
-                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
+                                    <a href="http://online.academiafernandinhobeltrao.com.br:81/online/matriculas2021notas/" target="_blank" class="btn btn-primary" style="margin-top: 10px;;" id="">Fazer matrícula</a>
 								</center>
 				            </div>
 				        </div>
