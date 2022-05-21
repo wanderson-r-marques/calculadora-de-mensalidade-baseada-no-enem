@@ -4,7 +4,7 @@ O sistema calcula o valor da mensalidade do cursinho se baseando na nota do ENEM
 
 ## Visualização
 
-![](Capturar.PNG)
+![](previews.png)
 
 ## Ferramentas
 
